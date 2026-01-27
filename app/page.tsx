@@ -1,5 +1,5 @@
-import { Page1 } from "./components/pages/page1";
-import { Page2 } from "./components/pages/page2";
+import { Page1 } from "./pages/page1";
+import { Page2 } from "./pages/page2";
 
 export default function Home() {
   return (

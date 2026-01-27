@@ -1,5 +1,5 @@
-import { HeroSection } from '../heroSection'
-import { NavBar } from '../navBar'
+import { HeroSection } from '../components/heroSection'
+import { NavBar } from '../components/navBar'
 
 export const Page1 = () => {
   return (
