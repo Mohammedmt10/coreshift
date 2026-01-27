@@ -137,7 +137,7 @@ export const LeftRotator = () => {
     },[animate])
 
   return (
-        <div className='flex mt-50 ml-40 min-h-screen' ref={scope}>
+        <div className='flex ml-40' ref={scope}>
         <div>
             <motion.div
             initial={leftPositions[0]}

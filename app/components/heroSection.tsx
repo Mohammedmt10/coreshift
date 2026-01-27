@@ -4,7 +4,7 @@ import { FlowDiagram } from './flowDiagram'
 export const HeroSection = () => {
   return (
     <div>
-        <div className="pt-20">
+        <div className="pt-30">
         <FlowDiagram />
       </div>
         <div className="font-grostesk text-center mt-15">
