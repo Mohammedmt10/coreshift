@@ -1,21 +1,15 @@
 "use client";
 import Image from 'next/image'
-import { motion, useAnimate, useMotionValueEvent, useScroll } from "motion/react"
-import { useEffect, useState } from 'react';
+import { easeIn, motion, useAnimate, useMotionValueEvent, useScroll } from "motion/react"
+import { useRef } from 'react';
 
 
 export const LeftRotator = () => {
     
     
     const [scope, animate] = useAnimate();
-    const [isScrolled , setIsScrolled] = useState(false);
+    const isScrolled = useRef<boolean>(false)
     const { scrollYProgress } = useScroll();
-
-    const SCROLL_THRESHOLD = 0
-    useMotionValueEvent(scrollYProgress, "change", (latest: number) => {
-        // setIsScrolled(latest > SCROLL_THRESHOLD);
-        console.log(latest)
-    });
 
 
     const leftPositions = [{
@@ -46,95 +40,110 @@ export const LeftRotator = () => {
     }]
 
          
-    useEffect(() => {
-        animate([
-            [".image1" , leftPositions[1] , { duration : 0.5}],
-            [".image1" , leftPositions[2] , { duration : 0.5}],
-            [".image1" , leftPositions[3] , { duration : 0.5}],
-            [".image1" , leftPositions[4] , { duration : 0.5}],
-            [".image1" , leftPositions[5] , { duration : 0.5}],
-            [".image1" , leftPositions[6] , { duration : 0.5}],
-            [".image1" , leftPositions[7] , { duration : 0.5}],
-            [".image1" , leftPositions[0] , { duration : 0.5}]
-        ])
-        
-        animate([
-            [".image2" , leftPositions[2] , { duration : 0.5}],
-            [".image2" , leftPositions[3] , { duration : 0.5}],
-            [".image2" , leftPositions[4] , { duration : 0.5}],
-            [".image2" , leftPositions[5] , { duration : 0.5}],
-            [".image2" , leftPositions[6] , { duration : 0.5}],
-            [".image2" , leftPositions[7] , { duration : 0.5}],
-            [".image2" , leftPositions[0] , { duration : 0.5}],
-            [".image2" , leftPositions[1] , { duration : 0.5}]
-        ])
-        
-        animate([
-            [".image3" , leftPositions[3] , { duration : 0.5}],
-            [".image3" , leftPositions[4] , { duration : 0.5}],
-            [".image3" , leftPositions[5] , { duration : 0.5}],
-            [".image3" , leftPositions[6] , { duration : 0.5}],
-            [".image3" , leftPositions[7] , { duration : 0.5}],
-            [".image3" , leftPositions[0] , { duration : 0.5}],
-            [".image3" , leftPositions[1] , { duration : 0.5}],
-            [".image3" , leftPositions[2] , { duration : 0.5}]
-        ])
-        
-        animate([
-            [".image4" , leftPositions[4] , { duration : 0.5}],
-            [".image4" , leftPositions[5] , { duration : 0.5}],
-            [".image4" , leftPositions[6] , { duration : 0.5}],
-            [".image4" , leftPositions[7] , { duration : 0.5}],
-            [".image4" , leftPositions[0] , { duration : 0.5}],
-            [".image4" , leftPositions[1] , { duration : 0.5}],
-            [".image4" , leftPositions[2] , { duration : 0.5}],
-            [".image4" , leftPositions[3] , { duration : 0.5}]
-        ])
+    const handleAnimation = async (duration : number) => {
+        console.log(isScrolled)
+        if(isScrolled.current) {
+            return;
+        }
+        isScrolled.current = true
+        await Promise.all([
+            animate([
+                [".image1" , leftPositions[1] , { duration : duration , ease : easeIn}],
+                [".image1" , leftPositions[2] , { duration : duration , ease : easeIn}],
+                [".image1" , leftPositions[3] , { duration : duration , ease : easeIn}],
+                [".image1" , leftPositions[4] , { duration : duration , ease : easeIn}],
+                [".image1" , leftPositions[5] , { duration : duration , ease : easeIn}],
+                [".image1" , leftPositions[6] , { duration : duration , ease : easeIn}],
+                [".image1" , leftPositions[7] , { duration : duration , ease : easeIn}],
+                [".image1" , leftPositions[0] , { duration : duration , ease : easeIn}]
+            ]),
+            
+            animate([
+                [".image2" , leftPositions[2] , { duration : duration , ease : easeIn}],
+                [".image2" , leftPositions[3] , { duration : duration , ease : easeIn}],
+                [".image2" , leftPositions[4] , { duration : duration , ease : easeIn}],
+                [".image2" , leftPositions[5] , { duration : duration , ease : easeIn}],
+                [".image2" , leftPositions[6] , { duration : duration , ease : easeIn}],
+                [".image2" , leftPositions[7] , { duration : duration , ease : easeIn}],
+                [".image2" , leftPositions[0] , { duration : duration , ease : easeIn}],
+                [".image2" , leftPositions[1] , { duration : duration , ease : easeIn}]
+            ]),
+            
+            animate([
+                [".image3" , leftPositions[3] , { duration : duration , ease : easeIn}],
+                [".image3" , leftPositions[4] , { duration : duration , ease : easeIn}],
+                [".image3" , leftPositions[5] , { duration : duration , ease : easeIn}],
+                [".image3" , leftPositions[6] , { duration : duration , ease : easeIn}],
+                [".image3" , leftPositions[7] , { duration : duration , ease : easeIn}],
+                [".image3" , leftPositions[0] , { duration : duration , ease : easeIn}],
+                [".image3" , leftPositions[1] , { duration : duration , ease : easeIn}],
+                [".image3" , leftPositions[2] , { duration : duration , ease : easeIn}]
+            ]),
+            
+            animate([
+                [".image4" , leftPositions[4] , { duration : duration , ease : easeIn}],
+                [".image4" , leftPositions[5] , { duration : duration , ease : easeIn}],
+                [".image4" , leftPositions[6] , { duration : duration , ease : easeIn}],
+                [".image4" , leftPositions[7] , { duration : duration , ease : easeIn}],
+                [".image4" , leftPositions[0] , { duration : duration , ease : easeIn}],
+                [".image4" , leftPositions[1] , { duration : duration , ease : easeIn}],
+                [".image4" , leftPositions[2] , { duration : duration , ease : easeIn}],
+                [".image4" , leftPositions[3] , { duration : duration , ease : easeIn}]
+            ]),
 
-        animate([
-            [".image5" , leftPositions[5] , { duration : 0.5}],
-            [".image5" , leftPositions[6] , { duration : 0.5}],
-            [".image5" , leftPositions[7] , { duration : 0.5}],
-            [".image5" , leftPositions[0] , { duration : 0.5}],
-            [".image5" , leftPositions[1] , { duration : 0.5}],
-            [".image5" , leftPositions[2] , { duration : 0.5}],
-            [".image5" , leftPositions[3] , { duration : 0.5}],
-            [".image5" , leftPositions[4] , { duration : 0.5}]
-        ])
+            animate([
+                [".image5" , leftPositions[5] , { duration : duration , ease : easeIn}],
+                [".image5" , leftPositions[6] , { duration : duration , ease : easeIn}],
+                [".image5" , leftPositions[7] , { duration : duration , ease : easeIn}],
+                [".image5" , leftPositions[0] , { duration : duration , ease : easeIn}],
+                [".image5" , leftPositions[1] , { duration : duration , ease : easeIn}],
+                [".image5" , leftPositions[2] , { duration : duration , ease : easeIn}],
+                [".image5" , leftPositions[3] , { duration : duration , ease : easeIn}],
+                [".image5" , leftPositions[4] , { duration : duration , ease : easeIn}]
+            ]),
 
-        animate([
-            [".image6" , leftPositions[6] , { duration : 0.5}],
-            [".image6" , leftPositions[7] , { duration : 0.5}],
-            [".image6" , leftPositions[0] , { duration : 0.5}],
-            [".image6" , leftPositions[1] , { duration : 0.5}],
-            [".image6" , leftPositions[2] , { duration : 0.5}],
-            [".image6" , leftPositions[3] , { duration : 0.5}],
-            [".image6" , leftPositions[4] , { duration : 0.5}],
-            [".image6" , leftPositions[5] , { duration : 0.5}]
-        ])
+            animate([
+                [".image6" , leftPositions[6] , { duration : duration , ease : easeIn}],
+                [".image6" , leftPositions[7] , { duration : duration , ease : easeIn}],
+                [".image6" , leftPositions[0] , { duration : duration , ease : easeIn}],
+                [".image6" , leftPositions[1] , { duration : duration , ease : easeIn}],
+                [".image6" , leftPositions[2] , { duration : duration , ease : easeIn}],
+                [".image6" , leftPositions[3] , { duration : duration , ease : easeIn}],
+                [".image6" , leftPositions[4] , { duration : duration , ease : easeIn}],
+                [".image6" , leftPositions[5] , { duration : duration , ease : easeIn}]
+            ]),
 
-        animate([
-            [".image7" , leftPositions[7] , { duration : 0.5}],
-            [".image7" , leftPositions[0] , { duration : 0.5}],
-            [".image7" , leftPositions[1] , { duration : 0.5}],
-            [".image7" , leftPositions[2] , { duration : 0.5}],
-            [".image7" , leftPositions[3] , { duration : 0.5}],
-            [".image7" , leftPositions[4] , { duration : 0.5}],
-            [".image7" , leftPositions[5] , { duration : 0.5}],
-            [".image7" , leftPositions[6] , { duration : 0.5}]
-        ])
+            animate([
+                [".image7" , leftPositions[7] , { duration : duration , ease : easeIn}],
+                [".image7" , leftPositions[0] , { duration : duration , ease : easeIn}],
+                [".image7" , leftPositions[1] , { duration : duration , ease : easeIn}],
+                [".image7" , leftPositions[2] , { duration : duration , ease : easeIn}],
+                [".image7" , leftPositions[3] , { duration : duration , ease : easeIn}],
+                [".image7" , leftPositions[4] , { duration : duration , ease : easeIn}],
+                [".image7" , leftPositions[5] , { duration : duration , ease : easeIn}],
+                [".image7" , leftPositions[6] , { duration : duration , ease : easeIn}]
+            ]),
 
-        animate([
-            [".image8" , leftPositions[0] , { duration : 0.5}],
-            [".image8" , leftPositions[1] , { duration : 0.5}],
-            [".image8" , leftPositions[2] , { duration : 0.5}],
-            [".image8" , leftPositions[3] , { duration : 0.5}],
-            [".image8" , leftPositions[4] , { duration : 0.5}],
-            [".image8" , leftPositions[5] , { duration : 0.5}],
-            [".image8" , leftPositions[6] , { duration : 0.5}],
-            [".image8" , leftPositions[7] , { duration : 0.5}]
+            animate([
+                [".image8" , leftPositions[0] , { duration : duration , ease : easeIn}],
+                [".image8" , leftPositions[1] , { duration : duration , ease : easeIn}],
+                [".image8" , leftPositions[2] , { duration : duration , ease : easeIn}],
+                [".image8" , leftPositions[3] , { duration : duration , ease : easeIn}],
+                [".image8" , leftPositions[4] , { duration : duration , ease : easeIn}],
+                [".image8" , leftPositions[5] , { duration : duration , ease : easeIn}],
+                [".image8" , leftPositions[6] , { duration : duration , ease : easeIn}],
+                [".image8" , leftPositions[7] , { duration : duration , ease : easeIn}]
+            ]),
         ])
-    },[animate])
+    isScrolled.current = false
+    }
+
+    useMotionValueEvent(scrollYProgress , "change" , (latest) => {
+        if(latest - scrollYProgress.getPrevious() > 0) {
+            handleAnimation(0.4);
+        }
+    })
+       
 
   return (
         <div className='flex ml-40' ref={scope}>
@@ -185,3 +194,4 @@ export const LeftRotator = () => {
     </div>
   )
 }
+
