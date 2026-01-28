@@ -35,11 +35,12 @@ return (
             <motion.div
             style={{ x , y , scale}}
             key={index}
-            className='absolute overflow-hidden rounded-2xl'
+            className='absolute overflow-hidden rounded-2xl h-50 w-50'
             >
                 <Image src={"/images/leftRotator1.png"} alt='RotatorImage' 
-              width={150}
-              height={150} />
+              fill
+              className='w-full h-full object-cover object-top rounded-full'
+              />
             </motion.div>
         )
         })} 

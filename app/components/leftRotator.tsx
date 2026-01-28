@@ -43,13 +43,13 @@ export const LeftRotator = () => {
           <motion.div
             key={index}
             style={{ x, y, scale }}
-            className="absolute rounded-2xl -translate-x-80 overflow-hidden"
+            className="absolute rounded-2xl -translate-x-80 overflow-hidden h-50 w-50"
           >
             <Image
               src="/images/leftRotator1.png"
-              width={150}
-              height={150}
+              fill
               alt="image"
+              className='object-cover object-top rounded-full'
             />
           </motion.div>
         );
