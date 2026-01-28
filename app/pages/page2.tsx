@@ -37,7 +37,7 @@ export const Page2 = () => {
     }
 
 return (
-    <div className="pt-50 min-h-screen items-center relative overflow-hidden">
+    <div className="pt-50 min-h-screen items-center relative w-full overflow-hidden">
         <LeftRotator />
         <div className=" w-fit mx-auto flex flex-col items-center gap-10 text-center">
             <motion.div
