@@ -6,8 +6,8 @@
 @theme {
   --font-inter: "Inter", sans-serif;
   --font-grostesk: "Space Grotesk", sans-serif;
-  --shadow-p3c2subcontainer:
-    inset 0px 4px 6px rgba(255, 255, 255, 0.3),
-    inset 0px -1px 3px rgba(0, 0, 0, 0.2), 0px 3px 6px rgba(0, 0, 0, 0.2);
+  --shadow-subcontainer:
+    inset 0px 0px 10px rgb(255, 255, 255, 0.7),
+    inset 0px -2px 10px rgba(0, 0, 0, 0.2), 0px 3px 6px rgba(0, 0, 0, 0.2);
   --shadow-p3c2container: 0px 10px 45px rgba(0, 0, 0, 0.2);
 }

@@ -21,7 +21,9 @@ export const Card = ({
       {mainComponent}
       <div className="px-8 pb-6">
         <h1 className="font-inter text-2xl font-semibold">{title}</h1>
-        <p className="tracking-tighter text-neutral-500">{paragraph}</p>
+        <p className="max-w-md tracking-tighter text-neutral-500">
+          {paragraph}
+        </p>
       </div>
     </div>
   );
